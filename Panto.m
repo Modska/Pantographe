@@ -4,9 +4,18 @@ l_or_md = 120; % Distance between origin and right motor
 l1 = 240; % Length from motor to passive joints
 l2 = 220; % Length from passive joints to end effector
 
-% Square trajectory corners
-x_corners = [120, 200, 200, 120];
-y_corners = [300, 300, 400, 400];
+% Parameters for the circular trajectory
+center_x = 0; % X-coordinate of the center of the circle
+center_y = 300; % Y-coordinate of the center of the circle
+radius = 100; % Radius of the circle
+num_points = 50; % Number of points to define the circle
+
+% Generate angles for the circular trajectory
+angles = linspace(0, 2*pi, num_points);
+
+% Calculate x and y coordinates for the circular trajectory
+x_corners = center_x + radius * cos(angles);
+y_corners = center_y + radius * sin(angles);
 
 % Calculate angles for each corner of the square trajectory
 for k = 1:length(x_corners)
